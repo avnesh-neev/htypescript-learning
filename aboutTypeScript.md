@@ -1,16 +1,14 @@
-#Question#1:
-What is TypeScript and why would I use it in place of JavaScript?
-
-#Ans:
+##Typescript Learning
+###What is TypeScript and why would I use it in place of JavaScript?
 Though the accepted answer is fine I felt it really doesn't do TypeScript justice at this point. It is not the early days anymore. TypeScript is finding a lot more adoption now with several popular frameworks being written in TypeScript. The reasons why you should choose TypeScript instead of JavaScript are many now.
 
-##Relation to JavaScript
+###Relation to JavaScript
 JavaScript is standardized through the ECMAScript standards. Not all browsers in use support all features of newer ECMAScript standards (see this table). TypeScript supports new ECMAScript standards and compiles them to (older) ECMAScript targets of your choosing (current targets are 3, 5 and 6/2015). This means you can use ES2015 modules, lambda functions, classes, decorators, the spread operator, destructuring and many other cool future JavaScript features today. It also adds type support of course, which is not part of any ECMAScript standard and may likely never be due to the interpreted nature instead of compiled nature of JavaScript. The type system of TypeScript is relatively rich and includes: interfaces, enums, hybrid types, generics, union and intersection types, access modifiers and much more. The official website of TypeScript gives an overview of these features.
 
-##Relation to other JavaScript targeting languages
+###Relation to other JavaScript targeting languages
 TypeScript has a unique philosophy compared to other languages that compile to JavaScript. JavaScript code is valid TypeScript code; TypeScript is a superset of JavaScript. You can almost rename your .js files to .ts files and start using TypeScript. TypeScript files are compiled to readable JavaScript, so that migration back is possible and understanding the compiled TypeScript is not hard at all. This way TypeScript builds on the successes of JavaScript while improving on its weaknesses.
 
-##Compilation
+###Compilation
 To use TypeScript you need a build process to compile to JavaScript code. The build process generally takes only a couple of seconds depending of course on the size of your project. The TypeScript compiler supports incremental compilation (--watch compiler flag), so that all subsequent changes can be compiled at greater speed.
 
 The TypeScript compiler can inline source map information in the generated .js files or create separate .map files. Source map information can be used by debugging utilities like the Chrome DevTools or some IDE to relate the lines in the JavaScript to the ones that generated them in the TypeScript. This makes it possible for you to set breakpoints and inspect variables during runtime. Source map information works pretty good, it was around long before TypeScript, but debugging TypeScript is generally not as great as when using JavaScript directly. Take the  this keyword for example. Due to the changed semantics of the this keyword around closures since ES2015, this may actually exists during runtime as a variable called _this (see this answer). This may confuse you during debugging, but generally is not a problem if you know about it or inspect the JavaScript code. It should be noted that Babel suffers the exact same kind of issue.
@@ -19,7 +17,7 @@ There are a few other tricks the TypeScript compiler can do like generating meta
 
 There are TypeScript compilation plugins available for Webpack, Gulp, Grunt and pretty much any other JavaScript build tool out there. A linter is also available in case you would like even more build time checking.
 
-##Optionally static typing and type inference
+###Optionally static typing and type inference
 JavaScript is dynamically typed. This means JavaScript does not know what type a variable is until it is actually instantiated at run-time. This also means that it may be too late. TypeScript adds type support to JavaScript. Bugs that are caused by false assumptions of some variable being of a certain type can be completely eradicated if you play your cards right; how strict you type your code or if you type your code at all is up to you.
 
 TypeScript makes typing a bit easier and a lot less explicit by the usage of type inference. For example: var x = "hello" in TypeScript is the same as var x : string = "hello". The type is simply inferred from its use. Even it you don't explicitly type the types, they are still there to save you from doing something which otherwise would result in a runtime error.
@@ -32,17 +30,17 @@ It is interesting to note that this very same paper finds that TypeScript is les
 
 For those with positive coefficients we can expect that the language is associated with, ceteris paribus, a greater number of defect fixes. These languages include C, C++, JavaScript, Objective-C, Php, and Python. The languages Clojure, Haskell, Ruby, Scala, and TypeScript, all have negative coefficients implying that these languages are less likely than the average to result in defect fixing commits.
 
-##IDE support
+###IDE support
 There is a wide range of IDE's that have excellent support for TypeScript, among them Visual Studio, Atom, Sublime, VS code, and WebStorm. The development experience is greatly improved because the IDE knows via the types what is allowed and what is not. For the same reason refactoring support and code completion are way better than when using JavaScript. Also compilation errors can be reported directly in the IDE reducing the number of times you have to switch to the browser (or whatever you are using to run JavaScript) to get something to work. Especially when refactoring I've noticed a significant gain in productivity compared to working with JavaScript.
 
-##JavaScript interop
+###JavaScript interop
 Since TypeScript is so closely related to JavaScript it has great interop capabilities, but some extra work is required. You need a TypeScript definition, so that Typescript knows for example that when you're calling some function called jQuery it actually exists somewhere and is not a typo on your part. These definitions are placed in .d.ts files.
 
 The simplest form they can take is that you simply acknowledge to TypeScript that what you are doing is actually possible (e.g. export var jQuery : any), but if you want proper type support you need to invest more effort in specifying exact types. Fortunately, for pretty much any semi-popular JavaScript framework out there somebody has already made TypeScript definitions. Some will be shipped along with the package and made available directly via npm or bower, but most can be downloaded with a command line tool called tsd. Simply run tsd install jquery and you will be ready to start using jQuery. Now your IDE will tell you exactly which jQuery functions are available and which parameters and of which types you may call them. There is one caveat though: the Typescript definitions must match the version of the library you are using. If they do not Typescript might disallow you from calling a function that actually exist or allow you to call a function that actually does not exist. Typically when using the latest versions of JavaScript libraries this does not cause problems.
 
 There is a hassle to this and it may be one of the reasons you do not choose TypeScript, but instead go for something like Babel that does not suffer from having to get type definitions at all.
 
-##Risk in choosing TypeScript
+###Risk in choosing TypeScript
 On the one hand you have future proof tools that take modern ECMAScript standards and compile it down to older JavaScript versions with Babel being the most popular one. On the other hand you have languages that may totally differ from JavaScript which target JavaScript, like Coffeescript, Clojure, Dart, Elm, Haxe, ScalaJs, and a whole host more (see this list). These languages, though they might be better then where JavaScript's future might ever lead, run a greater risk of not finding enough adoption for their futures to be guaranteed. You might also have more trouble finding experienced developers for some of these languages, though the ones you will find can often be more enthusiastic. Interop with JavaScript can also be a bit more involved, since they are farther removed from what JavaScript actually is.
 
 TypeScript sits in between these two extremes, thus balancing the risk. TypeScript is not a risky choice by any standard. It takes very little effort to get used to if you are known to JavaScript, since it is not a completely different language, has excellent JavaScript interop support and it has seen a lot of adoption recently.
