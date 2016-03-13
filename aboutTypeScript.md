@@ -1,6 +1,10 @@
 ##Typescript Learning
 ###What is TypeScript and why would I use it in place of JavaScript?
-Though the accepted answer is fine I felt it really doesn't do TypeScript justice at this point. It is not the early days anymore. TypeScript is finding a lot more adoption now with several popular frameworks being written in TypeScript. The reasons why you should choose TypeScript instead of JavaScript are many now.
+TypeScript is a superset of JavaScript which primarily provides optional static typing, classes and interfaces. One of the big benefits is to enable IDEs to provide a richer environment for spotting common errors as you type the code.
+
+For a large JavaScript project, adopting TypeScript might result in more robust software, while still being deployable where a regular JavaScript application would run.
+
+TypeScript is finding a lot more adoption now with several popular frameworks being written in TypeScript. The reasons why you should choose TypeScript instead of JavaScript are many now.
 
 ###Relation to JavaScript
 JavaScript is standardized through the ECMAScript standards. Not all browsers in use support all features of newer ECMAScript standards (see this table). TypeScript supports new ECMAScript standards and compiles them to (older) ECMAScript targets of your choosing (current targets are 3, 5 and 6/2015). This means you can use ES2015 modules, lambda functions, classes, decorators, the spread operator, destructuring and many other cool future JavaScript features today. It also adds type support of course, which is not part of any ECMAScript standard and may likely never be due to the interpreted nature instead of compiled nature of JavaScript. The type system of TypeScript is relatively rich and includes: interfaces, enums, hybrid types, generics, union and intersection types, access modifiers and much more. The official website of TypeScript gives an overview of these features.
